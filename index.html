@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Bone AI Systems — AI Receptionist for Trades & Service Businesses</title>
+<meta name="description" content="Your AI receptionist answers calls 24/7, books jobs, and sends confirmations — while you're on the tools. Fraser Coast, QLD.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --sky: #00BFFF; --bg: #0a0a0a; --surface: #111; --surface2: #1a1a1a; --border: #222; --text: #e0e0e0; --muted: #777; --green: #39FF14; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; font-size: 16px; line-height: 1.6; }
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .nav-logo { color: var(--sky); font-size: 17px; font-weight: 600; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a { color: var(--muted); font-size: 14px; text-decoration: none; }
+  .nav-cta { background: var(--sky); color: #000; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; }
+  .hero { max-width: 860px; margin: 0 auto; padding: 100px 2rem 80px; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: rgba(0,191,255,0.1); border: 1px solid rgba(0,191,255,0.25); color: var(--sky); font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 28px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .hero-badge::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 20px; letter-spacing: -1px; }
+  .hero h1 span { color: var(--sky); }
+  .hero p { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 36px; line-height: 1.7; }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--sky); color: #000; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; }
+  .btn-secondary { background: transparent; color: var(--text); padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid var(--border); }
+  .stat-bar { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--surface); padding: 28px 2rem; }
+  .stat-bar-inner { max-width: 860px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; }
+  .stat { text-align: center; padding: 10px 20px; }
+  .stat .num { font-size: 2rem; font-weight: 700; color: var(--sky); line-height: 1; }
+  .stat .label { font-size: 12px; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  section { padding: 80px 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sky); margin-bottom: 12px; }
+  h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 14px; letter-spacing: -0.5px; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; margin-bottom: 48px; line-height: 1.7; }
+  #how { background: var(--surface); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .step { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 24px 20px; }
+  .step-num { font-size: 2rem; font-weight: 700; color: var(--sky); line-height: 1; margin-bottom: 10px; }
+  .step p { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 22px 20px; }
+  .feature-icon { font-size: 1.5rem; margin-bottom: 10px; }
+  .feature h3 { font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+  .feature p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  #packages { background: var(--surface); }
+  .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .pkg { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 28px 22px; }
+  .pkg.featured { border: 2px solid var(--sky); position: relative; }
+  .popular-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--sky); color: #000; font-size: 10px; font-weight: 700; padding: 3px 12px; border-radius: 20px; text-transform: uppercase; white-space: nowrap; }
+  .pkg-name { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .pkg-price { font-size: 2.2rem; font-weight: 700; color: var(--sky); line-height: 1; margin-bottom: 4px; }
+  .pkg-price span { font-size: 14px; font-weight: 400; color: var(--muted); }
+  .pkg-sub { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+  .pkg ul { list-style: none; margin: 0; padding: 0; }
+  .pkg ul li { font-size: 13px; color: var(--muted); padding: 7px 0; border-bottom: 1px solid var(--border); line-height: 1.4; display: flex; gap: 8px; align-items: flex-start; }
+  .pkg ul li:last-child { border-bottom: none; }
+  .pkg ul li::before { content: 'check'; color: var(--sky); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .trial-banner { background: rgba(0,191,255,0.05); border: 1px solid rgba(0,191,255,0.2); border-radius: 12px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 32px; }
+  .trial-banner h3 { font-size: 1.1rem; font-weight: 600; color: var(--sky); margin-bottom: 4px; }
+  .trial-banner p { font-size: 13px; color: var(--muted); max-width: 460px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-photo-placeholder { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; text-align: center; padding: 20px; }
+  .about-name { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .about-title { font-size: 12px; color: var(--sky); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
+  .about-content p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
+  .about-creds { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+  .cred { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
+  .cred::before { content: 'arrow'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
+  #book { background: var(--surface); }
+  .book-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 32px; display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; }
+  .book-cover { background: linear-gradient(135deg, var(--sky) 0%, #0077aa 100%); border-radius: 8px; width: 120px; flex-shrink: 0; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; }
+  .book-title-text { font-size: 13px; font-weight: 700; color: #000; line-height: 1.3; }
+  .book-info { flex: 1; min-width: 200px; }
+  .book-info h3 { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  .book-info .tagline { font-size: 13px; color: var(--sky); margin-bottom: 14px; font-style: italic; }
+  .book-info p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 18px; }
+  .book-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .book-link { background: var(--surface2); border: 1px solid var(--border); color: var(--text); font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 6px; text-decoration: none; }
+  #demo { text-align: center; }
+  .demo-box { background: var(--surface); border: 1px solid rgba(0,191,255,0.2); border-radius: 16px; padding: 56px 40px; max-width: 620px; margin: 0 auto; }
+  .demo-box h2 { font-size: 2rem; margin-bottom: 14px; }
+  .demo-box p { color: var(--muted); margin-bottom: 32px; font-size: 0.95rem; }
+  .demo-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .contact-item { font-size: 14px; color: var(--muted); margin-top: 24px; }
+  .contact-item a { color: var(--sky); text-decoration: none; }
+  footer { border-top: 1px solid var(--border); padding: 32px 2rem; text-align: center; color: var(--muted); font-size: 12px; }
+  footer .footer-logo { color: var(--sky); font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+  @media (max-width: 600px) { .nav-links { display: none; } .hero { padding: 70px 1.5rem 60px; } section { padding: 60px 1.5rem; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Blue Bone AI</div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#packages">Packages</a>
+    <a href="#about">About</a>
+    <a href="#book">The Book</a>
+  </div>
+  <a href="#demo" class="nav-cta">Hear the Demo</a>
+</nav>
+<section style="padding-top:0;padding-bottom:0;">
+  <div class="hero">
+    <div class="hero-badge">Live AI Receptionist</div>
+    <h1>Never miss another job.<br><span>Your AI answers 24/7.</span></h1>
+    <p>While you are on the tools, your AI receptionist answers every call, qualifies the job, books it straight into your calendar, and sends confirmations automatically.</p>
+    <div class="hero-actions">
+      <a href="#demo" class="btn-primary">Hear it live — call our demo</a>
+      <a href="#packages" class="btn-secondary">See pricing</a>
+    </div>
+  </div>
+</section>
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat"><div class="num">24/7</div><div class="label">Always on — never diverts</div></div>
+    <div class="stat"><div class="num">3s</div><div class="label">Answer time, every call</div></div>
+    <div class="stat"><div class="num">$0</div><div class="label">Setup fee to get started</div></div>
+    <div class="stat"><div class="num">2 wks</div><div class="label">Free trial, no lock-in</div></div>
+  </div>
+</div>
+<section id="how">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2>Four steps. Zero missed jobs.</h2>
+    <p class="section-sub">The phone rings. You are on a roof, under a house, or driving between jobs. Here is what happens next.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><p>Phone rings — your AI answers instantly in a natural Australian voice. No voicemail. No hold music.</p></div>
+      <div class="step"><div class="step-num">2</div><p>AI qualifies the job, asks the right questions, and collects all customer details.</p></div>
+      <div class="step"><div class="step-num">3</div><p>Books the job straight into your Google Calendar. No back-and-forth. No double bookings.</p></div>
+      <div class="step"><div class="step-num">4</div><p>Sends confirmation to you and the customer via SMS — job details, time, address. Done.</p></div>
+    </div>
+  </div>
+</section>
+<section id="features">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2>Your AI works while you do not.</h2>
+    <p class="section-sub">Every task your receptionist would handle — automated, reliable, and always professional.</p>
+    <div class="features-grid">
+      <div class="feature"><div class="feature-icon">&#128222;</div><h3>24/7 Call Answering</h3><p>Every call answered, every time — 6am Saturday, 9pm Sunday, public holidays.</p></div>
+      <div class="feature"><div class="feature-icon">&#128197;</div><h3>Automatic Calendar Booking</h3><p>Jobs booked directly into Google Calendar. Checks availability and locks in the slot.</p></div>
+      <div class="feature"><div class="feature-icon">&#128172;</div><h3>SMS Confirmations</h3><p>Customer gets an SMS the moment they book. You get one too.</p></div>
+      <div class="feature"><div class="feature-icon">&#128260;</div><h3>Missed Call Text-Back</h3><p>If a call drops, your AI texts the customer immediately.</p></div>
+      <div class="feature"><div class="feature-icon">&#128203;</div><h3>Quote Follow-Ups</h3><p>Automatically follows up on unsold quotes. Politely. On schedule.</p></div>
+      <div class="feature"><div class="feature-icon">&#11088;</div><h3>Google Review Requests</h3><p>After every completed job, your AI asks for a review.</p></div>
+      <div class="feature"><div class="feature-icon">&#129518;</div><h3>Invoice Reminders</h3><p>Unpaid invoices get a gentle SMS reminder at the right time.</p></div>
+      <div class="feature"><div class="feature-icon">&#128242;</div><h3>Job Reminder SMS</h3><p>Customers get a reminder the day before. Fewer no-shows.</p></div>
+    </div>
+  </div>
+</section>
+<section id="packages">
+  <div class="container">
+    <div class="section-label">Pricing</div>
+    <h2>Simple monthly packages.</h2>
+    <p class="section-sub">No setup fees. No lock-in contracts. Start with a free 2-week trial first.</p>
+    <div class="packages-grid">
+      <div class="pkg">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-price">$500<span>/mo</span></div>
+        <div class="pkg-sub">For sole traders getting started</div>
+        <ul><li>24/7 AI call answering</li><li>Google Calendar booking</li><li>SMS confirmations</li><li>Missed call text-back</li><li>Setup and onboarding included</li></ul>
+      </div>
+      <div class="pkg featured">
+        <div class="popular-tag">Most Popular</div>
+        <div class="pkg-name">Full</div>
+        <div class="pkg-price">$800<span>/mo</span></div>
+        <div class="pkg-sub">For growing trade businesses</div>
+        <ul><li>Everything in Starter</li><li>Quote follow-ups</li><li>Google review requests</li><li>Invoice reminders</li><li>Job reminder SMS</li><li>Monthly performance summary</li></ul>
+      </div>
+      <div class="pkg">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-price">$1,200<span>/mo</span></div>
+        <div class="pkg-sub">For multi-truck operations</div>
+        <ul><li>Everything in Full</li><li>Full workflow audit</li><li>Every task automated</li><li>Custom AI responses</li><li>Priority support</li><li>Monthly strategy call</li></ul>
+      </div>
+    </div>
+    <div class="trial-banner">
+      <div><h3>Free 2-week trial — zero risk, zero lock-in</h3><p>Try it for your business. If it does not work, we shake hands and walk away. No hard feelings.</p></div>
+      <a href="#demo" class="btn-primary" style="white-space:nowrap;">Start free trial</a>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-placeholder"><div><div style="font-size:2rem;margin-bottom:8px;">&#128248;</div><div>Add your photo here<br />(white shirt, arms crossed)</div></div></div>
+      <div class="about-content">
+        <div class="about-name">Adam Mellor</div>
+        <div class="about-title">Entrepreneur · Author · AI Innovator</div>
+        <p>I spent 15 years running a furniture removals business on the Fraser Coast. I know exactly what it costs when a call goes to voicemail — I have lost those jobs too.</p>
+        <p>Blue Bone AI Systems exists to give trade and service businesses the same advantage big companies have had for years: a receptionist who never sleeps, never misses a call, and never has a bad day.</p>
+        <p>I am not a tech company. I am a tradie who learned the tools. I built this for businesses like the ones I ran.</p>
+        <div class="about-creds">
+          <div class="cred">15+ years running a service business on the Fraser Coast</div>
+          <div class="cred">Author of Shifting Success — the AI automation playbook for trades</div>
+          <div class="cred">Based in Fraser Coast, Queensland — available across Australia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="book">
+  <div class="container">
+    <div class="section-label">The Book</div>
+    <h2>Read the AI playbook for trades.</h2>
+    <p class="section-sub" style="margin-bottom:32px;">Understand exactly how AI automation works for service businesses before you commit to anything.</p>
+    <div class="book-card">
+      <div class="book-cover"><div class="book-title-text">Shifting<br />Success</div></div>
+      <div class="book-info">
+        <h3>Shifting Success</h3>
+        <div class="tagline">The complete guide to building and growing a service business with AI</div>
+        <p>Written by Adam Mellor. Chapter 10 covers AI automation in full — how to set up a voice receptionist, automate your admin, and stop losing jobs to voicemail.</p>
+        <div class="book-links">
+          <a href="https://adamcmai.gumroad.com/l/wvsis" target="_blank" class="book-link">Gumroad — $14.99 USD</a>
+          <a href="#" class="book-link">Amazon Kindle</a>
+          <a href="#" class="book-link">Amazon Paperback</a>
+          <a href="#" class="book-link">Google Play</a>
+          <a href="#" class="book-link">Apple Books</a>
+          <a href="#" class="book-link">eBay Australia</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="demo">
+  <div class="container">
+    <div class="demo-box">
+      <h2>Hear it <span style="color:var(--sky)">live.</span></h2>
+      <p>Call our demo number and speak to Sarah — the same AI your customers would hear. Takes 2 minutes. No sales pressure.</p>
+      <div class="demo-actions">
+        <a href="mailto:adam@blueboneai.com.au" class="btn-primary">Email for the demo number</a>
+        <a href="tel:0483800335" class="btn-secondary">Call Adam — 0483 800 335</a>
+      </div>
+      <div class="contact-item">Or email: <a href="mailto:adam@blueboneai.com.au">adam@blueboneai.com.au</a> · Fraser Coast, Queensland</div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="footer-logo">Blue Bone AI Systems</div>
+  <p>AI solutions for trades and service businesses · Fraser Coast, Queensland</p>
+  <p style="margin-top:8px;">ABN 53 679 313 896 · <a href="mailto:adam@blueboneai.com.au" style="color:var(--sky);text-decoration:none;">adam@blueboneai.com.au</a></p>
+</footer>
+</body>
+</html>
