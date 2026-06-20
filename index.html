@@ -65,12 +65,13 @@
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; } }
   .about-photo-placeholder { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; aspect-ratio: 4/5; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 13px; text-align: center; padding: 20px; }
+  .about-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; border-radius: 12px; border: 1px solid var(--border); display: block; }
   .about-name { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
   .about-title { font-size: 12px; color: var(--sky); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 18px; }
   .about-content p { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 14px; }
   .about-creds { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
   .cred { display: flex; gap: 10px; align-items: center; font-size: 13px; color: var(--muted); }
-  .cred::before { content: 'arrow'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
+  .cred::before { content: '✓'; color: var(--sky); font-weight: 700; flex-shrink: 0; }
   #book { background: var(--surface); }
   .book-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 32px; display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap; }
   .book-cover { background: linear-gradient(135deg, var(--sky) 0%, #0077aa 100%); border-radius: 8px; width: 120px; flex-shrink: 0; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px; }
@@ -189,15 +190,15 @@
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-photo-placeholder"><div><div style="font-size:2rem;margin-bottom:8px;">&#128248;</div><div>Add your photo here<br />(white shirt, arms crossed)</div></div></div>
+      <img src="adam-photo.jpg" alt="Adam Mellor — Founder of Bluebone AI" class="about-photo" />
       <div class="about-content">
         <div class="about-name">Adam Mellor</div>
         <div class="about-title">Entrepreneur · Author · AI Innovator</div>
-        <p>I spent 15 years running a furniture removals business on the Fraser Coast. I know exactly what it costs when a call goes to voicemail — I have lost those jobs too.</p>
+        <p>I spent nearly 20 years running furniture removal businesses across the Gold Coast and Fraser Coast. I know exactly what it costs when a call goes to voicemail — I have lost those jobs too.</p>
         <p>Bluebone AI exists to give trade and service businesses the same advantage big companies have had for years: a receptionist who never sleeps, never misses a call, and never has a bad day.</p>
         <p>I am not a tech company. I am a tradie who learned the tools. I built this for businesses like the ones I ran.</p>
         <div class="about-creds">
-          <div class="cred">15+ years running a service business on the Fraser Coast</div>
+          <div class="cred">Nearly 20 years running furniture removal businesses — Gold Coast &amp; Fraser Coast</div>
           <div class="cred">Author of Shifting Success — the AI automation playbook for trades</div>
           <div class="cred">Based in Fraser Coast, Queensland — available across Australia</div>
         </div>
@@ -208,21 +209,20 @@
 <section id="book">
   <div class="container">
     <div class="section-label">The Book</div>
-    <h2>Read the AI playbook for trades.</h2>
-    <p class="section-sub" style="margin-bottom:32px;">Understand exactly how AI automation works for service businesses before you commit to anything.</p>
+    <h2>The business behind Bluebone AI.</h2>
+    <p class="section-sub" style="margin-bottom:32px;">The real-world guide to building a profitable service business — and the final chapter on automating it with AI that led to Bluebone.</p>
     <div class="book-card">
       <div class="book-cover"><div class="book-title-text">Shifting<br />Success</div></div>
       <div class="book-info">
         <h3>Shifting Success</h3>
-        <div class="tagline">The complete guide to building and growing a service business with AI</div>
-        <p>Written by Adam Mellor. Chapter 10 covers AI automation in full — how to set up a voice receptionist, automate your admin, and stop losing jobs to voicemail.</p>
+        <div class="tagline">How to start, build &amp; grow a profitable furniture removal business — with lessons for any trade or service — then automate it with AI</div>
+        <p>Written by Adam Mellor from nearly 20 years on the tools. Most of the book is the hands-on playbook for starting and growing a profitable business; the final chapter shows how to automate it with AI — the same system behind Bluebone.</p>
         <div class="book-links">
           <a href="https://adamcmai.gumroad.com/l/wvsis" target="_blank" class="book-link">Gumroad — $14.99 USD</a>
-          <a href="https://shiftingsuccess.netlify.app" target="_blank" rel="noopener" class="book-link">Amazon Kindle</a>
-          <a href="https://shiftingsuccess.netlify.app" target="_blank" rel="noopener" class="book-link">Amazon Paperback</a>
-          <a href="https://shiftingsuccess.netlify.app" target="_blank" rel="noopener" class="book-link">Google Play</a>
+          <a href="https://www.amazon.com.au/dp/B0H29FR289" target="_blank" rel="noopener" class="book-link">Amazon Kindle</a>
+          <a href="https://www.amazon.com.au/dp/B0H2J5DYWC" target="_blank" rel="noopener" class="book-link">Amazon Paperback</a>
+          <a href="https://play.google.com/store/books/details/Adam_Mellor_Shifting_Success?id=kV7bEQAAQBAJ" target="_blank" rel="noopener" class="book-link">Google Play</a>
           <a href="https://shiftingsuccess.netlify.app" target="_blank" rel="noopener" class="book-link">Apple Books</a>
-          <a href="https://shiftingsuccess.netlify.app" target="_blank" rel="noopener" class="book-link">eBay Australia</a>
         </div>
       </div>
     </div>
